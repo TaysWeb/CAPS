@@ -10,10 +10,10 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
   
-app.get('/', function(req, res){
+app.get('/home', function(req, res){ 
     res.json({ message: 'Welcome to Movies api' });
 });
-// use router
-app.use(Router);
+
+
   
 app.listen(5000, () => console.log('Server running at http://localhost:7000'));
