@@ -1,5 +1,5 @@
-// import functions from Food model
-
+// call on functions from prods model
+const express= require('express') ;
 const {
     getMovies,
     getMovieById,
@@ -9,7 +9,7 @@ const {
 } = require('../models/prods.js');
 
 // get all Foods
-export const getMovies =(req,res)=>{
+ const getAll = (req,res)=>{
     getMovies((err,results)=> {
         if (err) {
             res.send.status(404);
@@ -21,10 +21,10 @@ export const getMovies =(req,res)=>{
 
 
 // get single Food
-export const showFoodById=(req,res)=>{
-    getFoodById(req.params.id,(err,results)=> {
+      const getSingle =(req,res)=>{
+        getMovieById(req.params.id,(err,results)=> {
         if (err) {
-            res.send(err);
+            res.send(err).status(404);
         }else {
             res.json(results);
         }
@@ -32,11 +32,11 @@ export const showFoodById=(req,res)=>{
 };
 
 // create Food
-export const createFood=(req,res)=>{
+const createMovie =(req,res)=>{
     const data = req.body;
-    insertFood(data,(err,results)=> {
+    insertMovie(data,(err,results)=> {
         if (err) {
-            res.send(err);
+            res.send(err).status(404);
         }else {
             res.json(results);
         }
@@ -44,12 +44,12 @@ export const createFood=(req,res)=>{
 };
 
 // update Food
-export const updateFood=(req,res)=>{
+ const updateMovieDetails =(req,res)=>{
     const data = req.body;
     const id = req.params.id;
-    updateFoodById(data,id,(err,results)=> {
+    updateMovieById(data,id,(err,results)=> {
         if (err) {
-            res.send(err);
+            res.send(err).status(404);
         }else {
             res.json(results);
         }
@@ -58,13 +58,17 @@ export const updateFood=(req,res)=>{
 
 
 // delete Food
-export const deleteFood=(req,res)=>{
+ const deleteMovie = (req,res)=>{
     const id = req.params.id;
-    deleteFoodById(id,(err,results)=> {
+    deleteMovieById(id,(err,results)=> {
         if (err) {
-            res.send(err);
+            res.send(err).status(404);
         }else {
             res.json(results);
         }
     });
 };
+
+module.exports = {
+    express
+}
