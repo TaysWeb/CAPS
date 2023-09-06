@@ -1,11 +1,16 @@
-const db = require('../config/db.js'); 
+import db from '../config/db.js'; 
+
 
 // Get All Movies
 export const getMovies = (result) => {
     db.query("SELECT MovieID,Title,Run_Time ,info,released, Genre, cineplex,Rating,image FROM Movies", (err, results) => {             
         if(err) {
-            console.log(err);
-            result(err, null);
+            // console.log(err);
+            // result(err, null);
+            res.json({
+                status: res.statusCode (500),
+                results
+            })
         } else {
             result(null, results);
         }
@@ -13,8 +18,8 @@ export const getMovies = (result) => {
 }
   
 // Get Single View Movie
-export const getMovieById = (id, result) => {
-    db.query("SELECT MovieID,Title,Run_Time ,info,released, Genre, cineplex ,Rating ,image  FROM product WHERE  MovieID= ?", [id], (err, results) => {             
+export const  getMovieById = (id, result) => {
+    db.query("SELECT MovieID,Title,Run_Time ,info,released, Genre, cineplex ,Rating ,image  FROM Movies WHERE  MovieID= ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -61,3 +66,7 @@ export const deleteMovieById = (id, result) => {
         }
     });   
 }
+
+
+
+

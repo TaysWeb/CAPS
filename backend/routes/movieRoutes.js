@@ -1,19 +1,34 @@
-const { getAll,getSingle,createMovie,updateMovieDetails,deleteMovie } = require('../controllers/movies.js') ;
-const express = require('express') ;
-const MovieRouter = express.Router() ;
 
-/////////////////////  Movies //////////////////////
+// import express
+import express from "express";
+  
+// import function from controller
+import  { getAll,getSingle,createMovie,updateMovieDetails,deleteMovie  } from "../controllers/movies.js" ;
+  
+// init express router
+const router = express.Router();
+  
 
-MovieRouter.get('/allMovies',getAll);
-
-
-
-
-
-
-
+// /////////////////////  Movies ////////////////////// 
 
 
+// Get All Product
+router.get('/getAll', getAll);
+  
+//Get Single Product
+router.get('/Movie/:id', getSingle);
+  
+// Create New Product
+router.post('/Movie', createMovie);
+  
+// // Update Product
+router.patch('/Movie/:id', updateMovieDetails);
+  
+// // Delete Product
+router.delete('/Movie/:id', deleteMovie);
+  
+// export default router
+export default router;
 
 
 
@@ -27,4 +42,7 @@ MovieRouter.get('/allMovies',getAll);
 
 
 
-module.exports = MovieRouter;
+
+
+
+

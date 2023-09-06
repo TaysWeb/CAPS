@@ -1,27 +1,21 @@
 // call on functions from prods model
-const express= require('express') ;
-const {
-    getMovies,
-    getMovieById,
-    insertMovie,
-    updateMovieById,
-    deleteMovieById,
-} = require('../models/prods.js');
 
-// get all Foods
- const getAll = (req,res)=>{
+import  { getMovies, getMovieById, insertMovie, updateMovieById,deleteMovieById,} from '../models/prods.js'
+
+// get all Movies
+ export const getAll = (req,res)=>{
     getMovies((err,results)=> {
         if (err) {
-            res.send.status(404);
+            res.send(err).status(404);
         }else {
             res.json(results);
         }
     });
-};
+}
 
 
-// get single Food
-      const getSingle =(req,res)=>{
+// get single movie
+export  const getSingle =(req,res)=>{
         getMovieById(req.params.id,(err,results)=> {
         if (err) {
             res.send(err).status(404);
@@ -29,10 +23,10 @@ const {
             res.json(results);
         }
     });
-};
+}
 
-// create Food
-const createMovie =(req,res)=>{
+// inserting a movie
+export  const createMovie =(req,res)=>{
     const data = req.body;
     insertMovie(data,(err,results)=> {
         if (err) {
@@ -41,10 +35,10 @@ const createMovie =(req,res)=>{
             res.json(results);
         }
     });
-};
+}
 
-// update Food
- const updateMovieDetails =(req,res)=>{
+// update a movie details
+export  const updateMovieDetails =(req,res)=>{
     const data = req.body;
     const id = req.params.id;
     updateMovieById(data,id,(err,results)=> {
@@ -54,21 +48,18 @@ const createMovie =(req,res)=>{
             res.json(results);
         }
     });
-};
+}
 
 
-// delete Food
- const deleteMovie = (req,res)=>{
+// delete a movie
+ export const deleteMovie = (req,res)=>{
     const id = req.params.id;
     deleteMovieById(id,(err,results)=> {
         if (err) {
-            res.send(err).status(404);
+            res.send(err).status(404);z
         }else {
             res.json(results);
         }
     });
-};
-
-module.exports = {
-    express
 }
+
