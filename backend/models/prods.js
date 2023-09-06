@@ -5,12 +5,9 @@ import db from '../config/db.js';
 export const getMovies = (result) => {
     db.query("SELECT MovieID,Title,Run_Time ,info,released, Genre, cineplex,Rating,image FROM Movies", (err, results) => {             
         if(err) {
-            // console.log(err);
-            // result(err, null);
-            res.json({
-                status: res.statusCode (500),
-                results
-            })
+            console.log(err);
+            result(err, null);
+         
         } else {
             result(null, results);
         }
@@ -43,7 +40,7 @@ export const insertMovie = (data, result) => {
   
 // Update Product to Database
 export const updateMovieById = (data, id, result) => {
-    db.query("UPDATE Movies SET  MovieID = ?, ,Title = ?,  Run_Time = ?, info = ?, released = ?, Genre = ?, cineplex = ?, Rating =?, image = ?   WHERE product_id = ?", [ data.MovieID,data.Title,data.Run_Time ,data.info, data.released,data.Genre, data.cineplex ,data.Rating ,data.image, id], (err, results) => {             
+    db.query("UPDATE Movies SET  MovieID = ?, ,Title = ?,  Run_Time = ?, info = ?, released = ?, Genre = ?, cineplex = ?, Rating =?, image = ?   WHERE MovieID = ?", [ data.MovieID,data.Title,data.Run_Time ,data.info, data.released,data.Genre, data.cineplex ,data.Rating ,data.image, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

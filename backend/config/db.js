@@ -12,7 +12,7 @@ connection.getConnection((err) => {
     if (err) {
        throw err ;
     } 
-    console.log(" Database Connected successfully !")
+    console.log("Database Connected successfully !")
   });
 
 export default connection;

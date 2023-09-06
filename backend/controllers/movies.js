@@ -6,7 +6,7 @@ import  { getMovies, getMovieById, insertMovie, updateMovieById,deleteMovieById,
  export const getAll = (req,res)=>{
     getMovies((err,results)=> {
         if (err) {
-            res.send(err).status(404);
+            res.send(err).status(500);
         }else {
             res.json(results);
         }
@@ -18,7 +18,7 @@ import  { getMovies, getMovieById, insertMovie, updateMovieById,deleteMovieById,
 export  const getSingle =(req,res)=>{
         getMovieById(req.params.id,(err,results)=> {
         if (err) {
-            res.send(err).status(404);
+            res.send(err).status(500);
         }else {
             res.json(results);
         }
@@ -30,7 +30,7 @@ export  const createMovie =(req,res)=>{
     const data = req.body;
     insertMovie(data,(err,results)=> {
         if (err) {
-            res.send(err).status(404);
+            res.send(err).status(500);
         }else {
             res.json(results);
         }
@@ -43,7 +43,7 @@ export  const updateMovieDetails =(req,res)=>{
     const id = req.params.id;
     updateMovieById(data,id,(err,results)=> {
         if (err) {
-            res.send(err).status(404);
+            res.send(err).status(500);
         }else {
             res.json(results);
         }
