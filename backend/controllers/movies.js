@@ -30,9 +30,10 @@ export  const createMovie =(req,res)=>{
     const data = req.body;
     insertMovie(data,(err,results)=> {
         if (err) {
-            res.send(err).status(500);
+            res.send(err);
         }else {
             res.json(results);
+            console.log("Movie Details was added Successfully");
         }
     });
 }

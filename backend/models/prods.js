@@ -33,14 +33,16 @@ export const insertMovie = (data, result) => {
             console.log(err);
             result(err, null);
         } else {
-            result(null, results);
+            console.log("ADDED SUCCESSFULLY");
+            result(null, results[0]);
+            
         }
     });   
 }
   
 // Update Product to Database
 export const updateMovieById = (data, id, result) => {
-    db.query("UPDATE Movies SET  MovieID = ?, ,Title = ?,  Run_Time = ?, info = ?, released = ?, Genre = ?, cineplex = ?, Rating =?, image = ?   WHERE MovieID = ?", [ data.MovieID,data.Title,data.Run_Time ,data.info, data.released,data.Genre, data.cineplex ,data.Rating ,data.image, id], (err, results) => {             
+    db.query("UPDATE Movies SET  Title = ?,  Run_Time = ?, info = ?, released = ?, Genre = ?, cineplex = ?, Rating = ?, image = ?   WHERE MovieID = ?", [ data.Title,data.Run_Time ,data.info, data.released,data.Genre, data.cineplex ,data.Rating ,data.image, id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
