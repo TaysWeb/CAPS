@@ -52,7 +52,7 @@ export const updateMovieById = (data, id, result) => {
         }
     });   
 }
-  
+   
 // Delete Product to Database
 export const deleteMovieById = (id, result) => {
     db.query("DELETE FROM Movies WHERE MovieID = ?", [id], (err, results) => {             
