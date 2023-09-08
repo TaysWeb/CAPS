@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-  <h5>dhbdhbd</h5>
-
+  
   </div>
 </template>
 
