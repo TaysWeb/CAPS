@@ -31,7 +31,7 @@ export default {
 :root {
 --text: #F6F4F4;
 --background: #030202;
---primary: #60716D;
+--primary: #60716D  ;
 --secondary: #DED9DB;
 --accent: #1ED29C;
 }

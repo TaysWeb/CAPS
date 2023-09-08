@@ -66,6 +66,8 @@
     <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="4" aria-label="Slide 5"></button>
     </div>
   <div class="carousel-inner">
     <div class="carousel-item active p-3">
@@ -77,6 +79,12 @@
     <div class="carousel-item p-3">
       <img src="https://i.postimg.cc/3rd9W8H4/WGTP-Generic-Feature-Banner1920x640-Desktop.webp" class="d-block w-100" alt="We got Power Banner">
     </div>
+    <div class="carousel-item p-3">
+      <img src="https://i.postimg.cc/XvPXBhHc/SOF-Feature-Banner1920x640-Desktop.webp" class="d-block w-100" alt="SOF">
+    </div>
+    <div class="carousel-item p-3">
+      <img src="https://i.postimg.cc/6qXWdNdR/BB-Feature-Banner1920x640-Desktop.webp" class="d-block w-100" alt="BB Banner">
+    </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -86,12 +94,6 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-  <!-- <ol class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators"  data-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button"  data-bs-target="#carouselExampleIndicators"  data-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators"  data-slide-to="2" aria-label="Slide 3"></button>
-  </ol> -->
-  
 </div> 
     </div>
 </template>
@@ -119,13 +121,8 @@ export default {
 .btn-group {
   background: #6B6C64 ;
   letter-spacing: 1px ;
+}
 
-}
-.carousel-indicators > button {
-  border-radius: 0.5em;
-  height:1em;
-  width:1em;
-}
 
 
 </style>
