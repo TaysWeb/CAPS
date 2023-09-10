@@ -3,14 +3,14 @@
 import express from "express";
   
 // import function from controller
-import  { getAllUsers,getUserById, getUserByEmail,updateUser,DeleteUser  } from "../controllers/userControl.js" ;
+import  {getAllUsers,getUserById,getUserByEmail,updateUser,DeleteUser} from "../controllers/userControl.js" ;
   
 // init express router
 const router = express.Router();
   
 
-// /////////////////////  Movies ////////////////////// 
-
+// /////////////////////  Users ////////////////////// 
+ 
 
 // Get All Product
 router.get('/users',  getAllUsers);

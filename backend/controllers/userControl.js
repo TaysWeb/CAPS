@@ -1,9 +1,9 @@
-import  { getAllUsers,getUserById, getUserByEmail,updateUser,DeleteUser} from '../models/Users.js'
+import  { getAllUsers,getUserById, getUserByEmail,updateUser,DeleteUser} from '../models/Users.js'; 
 
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
+  
 
-module.exports = {
   createUser: (req, res) => {
     const body = req.body;
     const salt = genSaltSync(10);
@@ -21,7 +21,7 @@ module.exports = {
         data: results
       });
     });
-  },
+  }
   login: (req, res) => {
     const body = req.body;
     getUserByEmail(body.email, (err, results) => {
@@ -52,7 +52,7 @@ module.exports = {
         });
       }
     });
-  },
+  }
   getUserById: (req, res) => {
     const id = req.params.id;
     getUserById(id, (err, results) => {
@@ -72,7 +72,7 @@ module.exports = {
         data: results
       });
     });
-  },
+  }
   getAllUsers: (req, res) => {
     getAllUsers((err, results) => {
       if (err) {
@@ -80,11 +80,11 @@ module.exports = {
         return;
       }
       return res.json({
-        success: 1,
+        success: res.status(500),
         data: results
       });
     });
-  },
+  }
   updateUsers: (req, res) => {
     const body = req.body;
     const salt = genSaltSync(10);
@@ -99,7 +99,7 @@ module.exports = {
         message: "updated successfully"
       });
     });
-  },
+  }
   DeleteUser: (req, res) => {
     const data = req.body;
     DeleteUser(data, (err, results) => {
@@ -114,9 +114,12 @@ module.exports = {
         });
       }
       return res.json({
-        success: res.status(200),
+        success: res.status(500),
         message: "user deleted successfully"
       });
     });
   }
-};
+
+  export default 
+    {getAllUsers,getUserById,getUserByEmail,updateUser,DeleteUser} ;
+  

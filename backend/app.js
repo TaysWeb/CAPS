@@ -43,7 +43,8 @@ import cors from  "cors" ;
 import bodyParser from  "body-parser" ;
  
 // import routes
-import Router  from  "./routes/movieRoutes.js" 
+import Router  from  "./routes/movieRoutes.js" ;
+import URouter from "./routes/users.js"
 
 // init express
 const app = express();
@@ -73,5 +74,6 @@ app.use((err, req, res, next) => {
 
 // use router
 app.use(Router);
-  
+app.use(URouter); 
+
 app.listen(7000, () => console.log('Server running at http://localhost:7000'));
