@@ -3,7 +3,7 @@
     <div class="container">
     <nav class="navbar navbar-expand-md fixed-top ">
         <div class="container-fluid">
-          <a class="navbar-brand text-white py-3 mx-4" href="#">Luxuaria</a>
+          <a class="navbar-brand text-white py-3 mx-4" href="../views/HomeView.vue"><img src="https://i.postimg.cc/MZLTRbYS/LOGO3.png" alt="logo3" width="250"></a>
         <!-- NAV BUTTON  -->
         <button
         class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"
