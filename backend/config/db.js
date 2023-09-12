@@ -9,10 +9,11 @@ const connection = createPool ({
     connectionLimit : 60
 }) 
 connection.getConnection((err) => {
-    if (err) {
-       throw err ;
-    } 
-    console.log("Database Connected successfully !")
-  });
+  if (err) {
+     console.error("Database connection error:", err);
+     throw err;
+  } 
+  console.log("Database Connected successfully!");
+});
 
 module.exports = connection ;

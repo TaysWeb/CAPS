@@ -4,16 +4,19 @@ const express = require("express")
 
 // const bodyParser = require("body-parser")
 const router = express.Router() 
-const {Movies} = require('../models/prods.js')
+const {getMovies} = require('../models/prods.js')
 
 
 // /////////////////////  Movies ////////////////////// 
 
 
 // Get All Product 
-router.get('/getAll', (req,res)=> {
-     Movies.getMovies(req,res)
-})
+router.get('/getAll',getMovies) ;
+
+
+module.exports =  router; 
+
+
 
 //Get Single Product
 // router.get('/Movie/:id',(req,res)=>{
@@ -34,8 +37,8 @@ router.get('/getAll', (req,res)=> {
 // // Delete Product
 // router.delete('/Movie/:id', deleteMovie);
   
-// export default router
-module.exports =  {express, router} 
+
+
 
 
 

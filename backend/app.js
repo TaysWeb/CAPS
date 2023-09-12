@@ -8,7 +8,7 @@ const Routes = require('./routes/movieRoutes.js')
 // const URouter = require( "./routes/users.js") 
 const AuthPage = require('./middleware/authUser.js')
 app.use(express.json());
-  app.use(express.urlencoded({extended:false}) );
+  app.use(express.urlencoded({extended:false}),Routes );
 // use cors
 app.use(cors());
  
@@ -21,7 +21,8 @@ app.get('/', function(req, res){
 app.get('/admin',AuthPage(["admin", "admin"]), (req, res)=> {
   res.send('Admin Page for Admin Users Only')
 })
-app.use('/getAll',Routes)
+app.use('/prod',Routes)
+
 // Handling Errors
 app.use((err, res) => {
     console.log(err);
