@@ -4,11 +4,11 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser') ;
 const port = process.env.port || 7000 ;
-const Routes = require('./routes/movieRoutes.js')
+const Routes = require('./routes/movieRoutes.js') ;
 // const URouter = require( "./routes/users.js") 
 const AuthPage = require('./middleware/authUser.js')
 app.use(express.json());
-  app.use(express.urlencoded({extended:false}),Routes );
+  app.use(express.urlencoded({extended:false}) );
 // use cors
 app.use(cors());
  
@@ -21,7 +21,7 @@ app.get('/', function(req, res){
 app.get('/admin',AuthPage(["admin", "admin"]), (req, res)=> {
   res.send('Admin Page for Admin Users Only')
 })
-app.use('/prod',Routes)
+app.use(Routes) ;
 
 // Handling Errors
 app.use((err, res) => {
