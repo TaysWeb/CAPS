@@ -1,58 +1,67 @@
-import  { getAllUsers,getUserById, getUserByEmail,updateUser,DeleteUser} from '../models/Users.js'; 
+const {getAllUsers, getUserById, getUserByEmail,insertUser, updateUser,DeleteUser } = require('../models/Users.js'); 
 
-const { hashSync, genSaltSync, compareSync } = require("bcrypt");
-const { sign } = require("jsonwebtoken");
+const { hash, genSalt, compare } = require( "bcrypt") ;
+const {sign} = require('jsonwebtoken')
   
-
-  createUser: (req, res) => {
+module.exports = {
+ register: (req, res) => {
     const body = req.body;
-    const salt = genSaltSync(10);
-    body.password = hashSync(body.password, salt);
-    create(body, (err, results) => {
+    //encrypting the password
+    const salt = genSalt(14); 
+    body.Password = hash(body.Password, salt);
+    insertUser(body, (err, results) => {
       if (err) {
         console.log(err);
         return res.status(500).json({
           success: 0,
-          message: "Database connection errror"
+          message: "Database connection error"
+        });
+      }
+      if (!results) {
+        console.log(results);
+        return res.status(200).json({
+          status:res.statusCode,
+          message: "You are now Registered"
         });
       }
       return res.status(200).json({
-        success: 1,
+      status:res.statusCode,
         data: results
       });
     });
-  }
+  },    // this is the end of the create User
   login: (req, res) => {
     const body = req.body;
     getUserByEmail(body.email, (err, results) => {
       if (err) {
-        console.log(err);
+       console.log(err);
+        throw err ; 
       }
-      if (!results) {
+      if (!results?.length) {
         return res.json({
           success: 0,
           data: "Invalid email or password"
         });
       }
-      const result = compareSync(body.password, results.password);
+      const result = compare(body.Password, results.Password);
       if (result) {
-        results.password = undefined;
+        results.Password = undefined;
         const token = sign({ result: results }, {
           expiresIn: "1h"
         });
         return res.json({
-          success: 1,
+          status: res.statusCode,
           message: "login successfully",
           token,
         });
       } else {
         return res.json({
-          success: 0,
+          status: res.statusCode,
           data: "Invalid email or password"
         });
       }
     });
-  }
+  },
   getUserById: (req, res) => {
     const id = req.params.id;
     getUserById(id, (err, results) => {
@@ -62,44 +71,44 @@ const { sign } = require("jsonwebtoken");
       }
       if (!results) {
         return res.json({
-          success: 0,
+          status: res.statusCode,
           message: "Record not Found"
         });
       }
       results.password = undefined;
       return res.json({
-        success: 1,
+        status: res.statusCode,
         data: results
       });
     });
-  }
-  getAllUsers: (req, res) => {
-    getAllUsers((err, results) => {
+  },
+getAllUsers: (req, res) => {
+ getAllUsers((err, results) => {
       if (err) {
         console.log(err);
         return;
       }
       return res.json({
-        success: res.status(500),
+        status: res.statusCode,
         data: results
       });
     });
-  }
+  },
   updateUsers: (req, res) => {
     const body = req.body;
-    const salt = genSaltSync(10);
-    body.password = hashSync(body.password, salt);
+    const salt = genSalt(14);
+    body.Password = hash(body.Password, salt);
     updateUser(body, (err, results) => {
       if (err) {
         console.log(err);
         return;
       }
       return res.json({
-        success: 1,
+        status: res.statusCode,
         message: "updated successfully"
       });
     });
-  }
+  },
   DeleteUser: (req, res) => {
     const data = req.body;
     DeleteUser(data, (err, results) => {
@@ -114,12 +123,11 @@ const { sign } = require("jsonwebtoken");
         });
       }
       return res.json({
-        success: res.status(500),
+        status: res.statusCode,
         message: "user deleted successfully"
       });
     });
   }
 
-  export default 
-    {getAllUsers,getUserById,getUserByEmail,updateUser,DeleteUser} ;
+}
   

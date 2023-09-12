@@ -1,34 +1,41 @@
 
 // import express
-import express from "express";
-  
-// import function from controller
-import  { getAll,getSingle,createMovie,updateMovieDetails,deleteMovie  } from "../controllers/movies.js" ;
-  
-// init express router
-const router = express.Router();
-  
+const express = require("express")
+
+// const bodyParser = require("body-parser")
+const router = express.Router() 
+const {Movies} = require('../models/prods.js')
+
 
 // /////////////////////  Movies ////////////////////// 
 
 
-// Get All Product
-router.get('/getAll', getAll);
-  
+// Get All Product 
+router.get('/getAll', (req,res)=> {
+     Movies.getMovies(req,res)
+})
+
 //Get Single Product
-router.get('/Movie/:id', getSingle);
+// router.get('/Movie/:id',(req,res)=>{
+//     movies.getSingle(req,res);
+// })
   
 // Create New Product
-router.post('/Movie', createMovie);
+// router.post('/Movie', createMovie);
   
-// // Update Product
-router.patch('/Movie/:id', updateMovieDetails);
+ // Update Product
+// router.patch('/Movie/:id', bodyParser.json()
+// updateMovieDetails);
   
+// router.put('/Movie/:id',
+// bodyParser.json(), (req, res)=>{
+//     updateMovieDetails(req, res)
+// })
 // // Delete Product
-router.delete('/Movie/:id', deleteMovie);
+// router.delete('/Movie/:id', deleteMovie);
   
 // export default router
-export default router;
+module.exports =  {express, router} 
 
 
 

@@ -1,34 +1,36 @@
 
 // import express
-import express from "express";
+const express = require("express");
+const bodyParser = require('body-parser');
   
-// import function from controller
-import  {getAllUsers,getUserById,getUserByEmail,updateUser,DeleteUser} from "../controllers/userControl.js" ;
+const {register, getAllUsers,getUserById,updateUsers, DeleteUser} = require( "../controllers/userControl.js") ;
   
 // init express router
 const router = express.Router();
   
 
 // /////////////////////  Users ////////////////////// 
- 
 
-// Get All Product
-router.get('/users',  getAllUsers);
+// Get All Users
+router.get('/users',getAllUsers);
   
-//Get Single Product
-router.get('/users/:id',getUserById);
+//Get a Single User
+router.get('/user/:id',getUserById);
   
-// Create New Product
-router.post('/user', getUserByEmail);
+// Registering a User
+// router.post('/user', login);
+router.post('/register',
+bodyParser.json(), (req, res)=>{
+ register(req, res)
+})
   
-// // Update Product
-router.patch('/user/:id', updateUser);
+// Update Product
+router.patch('/user/:id', updateUsers);
   
-// // Delete Product
+// Delete Product
 router.delete('/user/:id', DeleteUser);
-  
-// export default router
-export default router;
+
+module.exports =  router;
 
 
 

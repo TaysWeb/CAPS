@@ -1,8 +1,8 @@
 // import connection
-import db from "../config/db.js";
+const db = require ( "../config/db.js");
 
 // get all user
-export const getAllUsers = (result) => {
+ const getAllUsers = (result) => {
     db.query("SELECT userID,userfirst,userLast,Gender,userRole,email,Password,userProfile FROM Users", (err,results)=> {
         if (err){
             console.log(err);
@@ -12,8 +12,8 @@ export const getAllUsers = (result) => {
         }
     });
 };
-export const getUserById= (data,result) => {
-    db.query("SELECT userfirst,userLast,Gender,userRole,email,Password,userProfile FROM Users WHERE userId= ?",[data], (err,results)=> {
+ const getUserById= (data,result) => {
+    db.query("SELECT  userId,userfirst,userLast,Gender,userRole,email,Password,userProfile FROM Users WHERE userId= ?",[data], (err,results)=> {
         if (err){
             console.log(err);
             result(err,null);
@@ -24,7 +24,7 @@ export const getUserById= (data,result) => {
 };
 
 // get single user email 
-export const getUserByEmail= (data,result) => {
+const getUserByEmail= (data,result) => {
     db.query("SELECT userID,userfirst,userLast,Gender,userRole,Password,userProfile FROM Users WHERE email = ?",[data], (err,results)=> {
         if (err){
             console.log(err);
@@ -36,7 +36,7 @@ export const getUserByEmail= (data,result) => {
 };
 
 // insert User
-export const updateUser = (data, id, result) => {
+const updateUser = (data, id, result) => {
     db.query("UPDATE Users SET  userfirst = ?, userLast = ?, Gender= ?, userRole= ?, email = ?, Password = ?, userProfile = ?   WHERE UserID = ?", [ data.userfirst, data.userLast, data.Gender, data.userRole, data.email, data.Password, data.userProfile,  id], (err, results) => {             
         if(err) {
             console.log(err);
@@ -47,11 +47,21 @@ export const updateUser = (data, id, result) => {
         }
     });   
 }
+// inserting User
+const insertUser = (data,result) => {
+    db.query("insert into Users(userfirst,userLast , Gender, email,Password) values(?,?,?,?,?)",[data.userfirst, data.userLast, data.Gender, data.email,data.Password], (err,results)=> {
+        if (err){
+            console.log(err);
+            result(err,null);
+        }else{
+            result(null,results);
+            alert('Are you sure');
+        }
+    });
+};
 
-
-
-// insert User
-export const DeleteUser = (data,result) => {
+// delete User
+const DeleteUser = (data,result) => {
     db.query("delete from Users where userID= ?",data, (err,results)=> {
         if (err){
             console.log(err);
@@ -62,3 +72,5 @@ export const DeleteUser = (data,result) => {
         }
     });
 };
+
+module.exports = { getAllUsers, getUserById, getUserByEmail ,insertUser  ,updateUser,DeleteUser } ;
