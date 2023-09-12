@@ -86,7 +86,7 @@ getAllUsers: (req, res) => {
  getAllUsers((err, results) => {
       if (err) {
         console.log(err);
-        return;
+        throw err;
       }
       return res.json({
         status: res.statusCode,
