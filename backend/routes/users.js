@@ -3,34 +3,38 @@
 const express = require("express");
 const bodyParser = require('body-parser');
   
-const {register, getAll,getUserById,updateUsers, DeleteUser} = require( "../controllers/userControl.js") ;
+const {users} = require( "../models") ;
   
 // init express router
-const router = express.Router();
+const routes = express.Router();
   
 
 // /////////////////////  Users ////////////////////// 
 
 // Get All Users
-router.get('/Users', getAll);
+routes.get('/users', (req,res)=> {
+    users.fetchAllUser(req,res)
+}) 
   
-//Get a Single User
-router.get('/user/:id',getUserById);
+// //Get a Single User
+routes.get('/user/:id',(req,res)=>{
+users.fetchUserById(req,res)
+ });
   
-// Registering a User
-router.post('/user', register);
-// router.post('/register',
-// bodyParser.json(), (req, res)=>{
-//  register(req, res)
-// })
-  
-// Update Product
-router.patch('/user/:id', updateUsers);
-  
-// Delete Product
-router.delete('/user/:id', DeleteUser);
+ // Registering a User
 
-module.exports =  router;
+routes.post('/register',
+bodyParser.json(), (req, res)=>{
+ users.register(req, res)
+})
+  
+// // Update Product
+// router.patch('/user/:id', updateUsers);
+  
+// // Delete Product
+// router.delete('/user/:id', DeleteUser);
+
+module.exports = {express ,routes}
 
 
 

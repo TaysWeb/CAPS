@@ -1,15 +1,15 @@
 // const express = require('express') ;
-const express = require('express')
+const {express,routes} = require('./routes/users.js')
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser') ;
 const port = process.env.port || 7000 ;
 const Routes = require('./routes/movieRoutes.js') ;
-const URouter = require('./routes/users.js') ;
+// const URouter = require('./routes/users.js') ;
 // const URouter = require( "./routes/users.js") 
 const AuthPage = require('./middleware/authUser.js')
 app.use(express.json());
-  app.use(express.urlencoded({extended:false}) );
+  app.use(express.urlencoded({extended:false}),routes);
 // use cors
 app.use(cors());
  
@@ -35,7 +35,7 @@ app.use((err, res) => {
 });
 
  // use router
-app.use(URouter); 
+// app.use(URouter); 
 
  app.listen(port, () => console.log('Server running at http://localhost:7000'));
 
