@@ -4,7 +4,7 @@ const { hash, genSalt, compare } = require( "bcrypt") ;
 const {sign} = require('jsonwebtoken')
   
 module.exports = {
- register: (req, res) => {
+ register: (req, res,err) => {
     const body = req.body;
     //encrypting the password
     const salt = genSalt(14); 
@@ -82,7 +82,7 @@ module.exports = {
       });
     });
   },
-getAllUsers: (req, res) => {
+getAll: (req, res) => {
  getAllUsers((err, results) => {
       if (err) {
         console.log(err);

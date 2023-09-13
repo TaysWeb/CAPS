@@ -13,7 +13,7 @@ const db = require ( "../config/db.js");
     });
 };
  const getUserById= (data,result) => {
-    db.query("SELECT  userId,userfirst,userLast,Gender,userRole,email,Password,userProfile FROM Users WHERE userId= ?",[data], (err,results)=> {
+    db.query("SELECT  userID,userfirst,userLast,Gender,userRole,email,Password,userProfile FROM Users WHERE userId= ?",[data], (err,results)=> {
         if (err){
             console.log(err);
             result(err,null);
