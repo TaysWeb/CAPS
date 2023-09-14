@@ -13,6 +13,7 @@ const db = createPool({
 db.getConnection((err) => {
    if (err) {
     console.log(err) ;
+    console.log("DB_URL:", process.env.DB_URL);
    } else {
     console.log("Database Connected Successfully")
    }
