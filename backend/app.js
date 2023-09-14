@@ -1,10 +1,11 @@
 // const express = require('express') ;
-const {express,routes} = require('./routes/users.js')
+const {express,routes} = require('./routes/Router.js')
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser') ;
 const port = process.env.port || 7000 ;
 const Routes = require('./routes/movieRoutes.js') ;
+
 // const URouter = require('./routes/users.js') ;
 // const URouter = require( "./routes/users.js") 
 const AuthPage = require('./middleware/authUser.js')

@@ -37,7 +37,7 @@ class Users {
     //payload
     const user = {    
         email : data.email,
-        // password: data.Password
+        password: data.Password
     }
     //mysql query
     const query = `insert into Users SET ? ;`
@@ -104,7 +104,7 @@ class Users {
  const query=`UPDATE Users SET  ? where userID = ? ; `  ;        
  db.query(query[req.body,req.params.id],(err)=>{
      if(err) throw err  
-     res.json({
+     res.json({ 
         status:res.statusCode,
         msg:"Movie Details was updated Successfully"
      });
