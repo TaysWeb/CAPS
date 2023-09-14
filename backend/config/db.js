@@ -9,7 +9,7 @@ const connection = createPool({
     connectionLimit : 55
 }) 
 connection.getConnection((err) => {
-  if (err)       throw err;
+  if (err)  throw err 
      console.log("Database connection error:", err);
       
   console.log("Database Connected successfully!");
