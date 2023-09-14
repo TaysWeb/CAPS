@@ -1,4 +1,4 @@
-const  {createPool} =require( 'mysql');
+const {createPool} =require( 'mysql');
 require('dotenv/config')
 
 const Connection = createPool({
