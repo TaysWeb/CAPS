@@ -1,4 +1,4 @@
-const {createPool} =require( 'mysql');
+const {createPool} = require('mysql');
 require('dotenv').config();
 
 const db = createPool({
@@ -9,7 +9,9 @@ const db = createPool({
     connectionLimit : 55
 }) 
 db.getConnection((err) => {
-  if (err) throw err ;   
+  if (err){
+    throw err ;   
+  } 
   console.log("Database Connected successfully!")
 });
 
