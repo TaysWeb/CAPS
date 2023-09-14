@@ -1,5 +1,5 @@
 const {createPool} =require( 'mysql');
-require('dotenv/config')
+require('dotenv').config()
 
 const db = createPool({
     host: process.env.DB_HOST ,
