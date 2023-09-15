@@ -1,16 +1,15 @@
 <template>
     
     <div class="container">
-        <div class="book">
-            <div v-if="Movie">
-            <img :src="Movie.image" :alt="Movie.Title">
-        </div>
+        <div class="book" v-for="mov in Movie" :key="mov.MovieID">
+            <img :src="mov.image" :alt="mov.Title">
     </div>
 </div>
 </template>
 <script>
 export default {
-    
+  props:['movie']
+
 }
 </script>
 <style scoped >
@@ -18,16 +17,16 @@ export default {
     border: 1px solid lightgray;
     width: 500px;
     height: 400px;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     transform-style: preserve-3d;
     perspective: 400px;
 }
 
 .book {
-    width: 200px;
-    height: 300px;
+    width: 200px !important;
+    height: 300px !important ;
     transform: rotateY(-30deg);
     transform-style: preserve-3d;
     position: relative;
@@ -49,14 +48,11 @@ export default {
     }
 }
 
-
-
-
 .book> :first-child {
     position: absolute;
     background: #0d47a1aa;
-    width: 200px;
-    height: 300px;
+    width: 200px !important;
+    height: 300px !important; 
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
@@ -75,9 +71,9 @@ export default {
     content: '';
     position: absolute;
     left: 0;
-    width: 200px;
-    height: 300px;
-    background: #1b5e20aa;
+    width: 200px !important;
+    height: 300px !important;
+    background: #1b5e20aa !important;
     transform: translateZ(-50px);
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;

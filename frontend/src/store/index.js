@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import  axios from 'axios'
-const apiURL = "http://localhost:700/" ;
+const apiURL = "https://caps-7.onrender.com/" ;
 export default createStore({
   state: {
     users: null,
@@ -9,7 +9,7 @@ export default createStore({
     Movie: null,
     Spinner: null,
     token: null,
-    selectedMovie: null,
+    // selectedMovie: null,
     msg: null,
   },
   mutations: {
@@ -22,9 +22,9 @@ export default createStore({
     setMovies(state, Movies) {
       state.Movies = Movies;     
     },
-    setSelectedMovie(state,selectedMovie ) {
-      state.selectedMovie = selectedMovie ;
-    },
+    // setSelectedMovie(state,selectedMovie ) {
+    //   state.selectedMovie = selectedMovie ;
+    // },
     setMovie(state, Movie) {
       state.Movie = Movie;
     },
@@ -89,7 +89,7 @@ export default createStore({
     },
     async fetchMovies(context) {
       try{
-        let Movies = await (await fetch("http://localhost:700/getAll")).json()
+        let Movies = await (await fetch("https://caps-7.onrender.com/getAll")).json()
         if (Movies) {
           context.commit ("setMovies", Movies)
         } else {
