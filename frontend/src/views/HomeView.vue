@@ -2,27 +2,21 @@
   <div v-if="Movies">
    <movieComp :Movies="Movies"/>
   </div>
-  <div v-else>Just a moment ...</div>
+  <div v-else>
+  <SpinnerComp/>
+</div>
 </template>
 
 <script>
 import movieComp from '@/components/movie-comp.vue';
+import SpinnerComp from '@/components/spinner-Comp.vue';
 
 
 export default {
   name: 'HomeView',
   components: {
-    movieComp
-  },
-  computed: {
-      Movies() {
-            return this.$store.state.Movies
-        },
-    },
-    mounted() {
-      
-        return this.$store.dispatch('fetchMovies');
-
-    },
+    movieComp,
+    SpinnerComp
+}
 }
 </script>

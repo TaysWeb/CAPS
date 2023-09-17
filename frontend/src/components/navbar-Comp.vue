@@ -30,19 +30,19 @@
                 <router-link to="/" class="nav-link">Home</router-link>
               </li>
               <li class="nav-item text-white">
-                <router-link to="/" class="nav-link ">Now Showing</router-link>
+                <router-link to="/Now Showing" class="nav-link ">Now Showing</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/" class="nav-link ">Cineplexes</router-link>
+                <router-link to="/Cineplexes" class="nav-link ">Cineplexes</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/" class="nav-link">Prices</router-link>
+                <router-link to="/Prices" class="nav-link">Prices</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/" class="nav-link ">About Us </router-link>
+                <router-link to="/About Us" class="nav-link ">About Us </router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/" class="nav-link ">Contact</router-link>
+                <router-link to="/Contact" class="nav-link ">Contact</router-link>
               </li>
 
                  <!-- Right elements -->

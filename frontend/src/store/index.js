@@ -93,7 +93,7 @@ export default createStore({
         if (Movies) {
           context.commit ("setMovies", Movies)
         } else {
-          alert("error")
+          alert("error")  
         }
       }
       catch(e) {
