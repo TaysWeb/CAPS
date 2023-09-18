@@ -122,7 +122,8 @@ export default {
   background: #6B6C64 ;
   letter-spacing: 1px ;
 }
-
-
+.carousel-inner {
+ height: 46vh ;
+}
 
 </style>

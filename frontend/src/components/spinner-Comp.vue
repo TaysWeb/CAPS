@@ -1,11 +1,10 @@
 <template >
-<div class="wrapper m-auto">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="shadow"></div>
-    <div class="shadow"></div>
-    <div class="shadow"></div>
+  <div class="loader m-auto">
+    <div class="orbe" style="--index: 0"></div>
+    <div class="orbe" style="--index: 1"></div>
+    <div class="orbe" style="--index: 2"></div>
+    <div class="orbe" style="--index: 3"></div>
+    <div class="orbe" style="--index: 4"></div>
 </div>
 </template>
 <script>
@@ -14,94 +13,47 @@ export default {
 }
 </script>
 <style >
- .wrapper {
-  width: 150px;
-  height: 40px;
+ .loader {
+  --size-loader: 50px;
+  --size-orbe: 10px;
+  width: var(--size-loader);
+  height: var(--size-loader);
   position: relative;
-  z-index: 1;
+  transform: rotate(45deg);
 }
 
-.circle {
-  width: 15px;
-  height: 15px;
+.orbe {
   position: absolute;
-  border-radius: 50%;
-  background-color: #fff;
-  left: 15%;
-  transform-origin: 50%;
-  animation: circle7124 .5s alternate infinite ease;
+  width: 100%;
+  height: 100%;
+  --delay: calc(var(--index) * 0.1s);
+  animation: orbit7456 ease-in-out 1.5s var(--delay) infinite;
+  opacity: calc(1 - calc(0.2 * var(--index)));
 }
 
-@keyframes circle7124 {
+.orbe::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: var(--size-orbe);
+  height: var(--size-orbe);
+  background-color: #3ae374;
+  box-shadow: 0px 0px 20px 2px #3ae374;
+  border-radius: 50%;
+}
+
+@keyframes orbit7456 {
   0% {
-    top: 60px;
-    height: 5px;
-    border-radius: 50px 50px 25px 25px;
-    transform: scaleX(1.7);
   }
 
-  40% {
-    height: 20px;
-    border-radius: 50%;
-    transform: scaleX(1);
+  80% {
+    transform: rotate(360deg);
   }
 
   100% {
-    top: 0%;
+    transform: rotate(360deg);
   }
 }
-
-.circle:nth-child(2) {
-  left: 45%;
-  animation-delay: .2s;
-}
-
-.circle:nth-child(3) {
-  left: auto;
-  right: 15%;
-  animation-delay: .3s;
-}
-
-.shadow {
-  width: 20px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: rgba(0,0,0,0.9);
-  position: absolute;
-  top: 62px;
-  transform-origin: 50%;
-  z-index: -1;
-  left: 15%;
-  filter: blur(1px);
-  animation: shadow046 .5s alternate infinite ease;
-}
-
-@keyframes shadow046 {
-  0% {
-    transform: scaleX(1.5);
-  }
-
-  40% {
-    transform: scaleX(1);
-    opacity: .7;
-  }
-
-  100% {
-    transform: scaleX(.2);
-    opacity: .4;
-  }
-}
-
-.shadow:nth-child(4) {
-  left: 45%;
-  animation-delay: .2s
-}
-
-.shadow:nth-child(5) {
-  left: auto;
-  right: 15%;
-  animation-delay: .3s;
-}
-
 
 </style>
