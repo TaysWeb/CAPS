@@ -4,15 +4,15 @@
     <div class="container text-white group py-3 ">
    
   <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-  <input placeholder="Search for a Movie" type="search" class="input">
+  <input placeholder="Search for a Movie"  v-model="search"  class="input" @keyup="fetchMovies">
 
   </div>
    <!-- Movies Display -->
     <div v-if="Movies">
-    <div v-for="movie in Movies" :key="movie.MovieID" :Movies="Movies">
+    <div v-for="movie in Movies" :key="movie.MovieID" :Movies="Movies"> 	      
     <div class="container" >
-        <div class="book ">
-          <img :src="movie.image" :alt="movie.Title" >
+        <div class="movies ">
+          <img :src="movie.image" :alt="movie.Title" width="600">
         </div>                                                                                                         
       </div>
     </div>
@@ -32,7 +32,13 @@ export default {
   name: 'HomeView',
   components: {
     SpinnerComp
-  },
+  },    
+  data() {
+        return {
+
+            search: ""
+        }
+    },
   computed:{
             Movies() {
                 return this.$store.state.Movies
@@ -40,7 +46,23 @@ export default {
         },
         mounted() {
             this.$store.dispatch('fetchMovies')
-        }
+        },
+        methods: {
+    fetchMovies() {
+      fetch("https://caps-7.onrender.com/getAll").then(response => response.json())
+        .then(res => {
+          if (this.search) {
+            this.Movies = res.results.filters(Movies => Movies.Title.toLowerCase().includes(this.search.toLowerCase())
+            );
+          } else {
+            this.Movies = res.results;
+          }
+        });
+    }
+  },
+  created() {
+    this.fetchMovies();
+  }
 
 }
 </script>
@@ -60,7 +82,7 @@ input::placeholder {
 .group {
  display: flex;
  line-height: 70px;
- align-items: center;
+ margin-left:20%;
  position: relative;
 }
 
@@ -80,7 +102,7 @@ input::placeholder {
 
 .input::placeholder {
   color: var(--text);
- margin-left: 50%;
+  font-size:30px;
 }
 
 .input:focus, input:hover {
@@ -89,16 +111,15 @@ input::placeholder {
  background-color: #646464;
  box-shadow: 0 0 0 4px rgba(211, 199, 203, 0.1);
 }
-
 .icon {
  position: absolute;
  left: 1rem;
- width: 2rem;
- height: 2rem;
+ right:1rem;
+ bottom:2rem;
+ width: 2.4rem;
+ height: 2.2rem;
 }
-
-
-.book {
+.movies{
     width: 200px !important;
     height: 300px !important ;
     transform: rotateY(-30deg);    
@@ -108,14 +129,14 @@ input::placeholder {
     animation: 1s ease 0s 1 initAnimation;
     margin-bottom: 8% !important;
 }
-.book-container {
+.movies-container {
     border: 1px solid lightgray;
     width: 500px;
     height: 400px;
     transform-style: preserve-3d;
     perspective: 400px;
 }
-.book:hover {
+.movies:hover {
     transform: rotate(0deg);
 }
 
@@ -129,7 +150,7 @@ input::placeholder {
     }
 }
 
-.book> :first-child {
+.movies> :first-child {
     position: absolute;
     background: #0d47a1aa;
     width: 200px !important;
@@ -137,8 +158,7 @@ input::placeholder {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
-
-.book::before {
+.movies::before {
     position: absolute;
     /* content: ''; */
     background: #bf360caa;
@@ -148,7 +168,7 @@ input::placeholder {
     transform: translateX(calc(200px - 50px / 2 - 3px)) rotateY(90deg) translateX(calc(50px / 2));
 }
 
-.book::after {
+.movies::after {
     /* content: ''; */
     position: absolute;
     left: 0;
