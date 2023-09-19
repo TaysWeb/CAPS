@@ -101,7 +101,7 @@ input::placeholder {
 .book {
     width: 200px !important;
     height: 300px !important ;
-    transform: rotateY(-30deg);
+    transform: rotateY(-30deg);    
     transform-style: preserve-3d;
     position: relative;
     transition: transform 1s ease;
