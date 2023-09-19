@@ -11,9 +11,9 @@
     <div v-if="Movies">
     <div v-for="movie in Movies" :key="movie.MovieID" :Movies="Movies">
     <div class="container" >
-        <div class="book">
-          <img :src="movie.image" :alt="movie.Title">
-        </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+        <div class="book ">
+          <img :src="movie.image" :alt="movie.Title" >
+        </div>                                                                                                         
       </div>
     </div>
     </div>
@@ -80,14 +80,14 @@ input::placeholder {
 
 .input::placeholder {
   color: var(--text);
- /* margin-left: 50%; */
+ margin-left: 50%;
 }
 
 .input:focus, input:hover {
  outline: none;
  border-color: rgba(234,76,137,0.4);
- background-color: #fff;
- box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+ background-color: #646464;
+ box-shadow: 0 0 0 4px rgba(211, 199, 203, 0.1);
 }
 
 .icon {
@@ -106,6 +106,7 @@ input::placeholder {
     position: relative;
     transition: transform 1s ease;
     animation: 1s ease 0s 1 initAnimation;
+    margin-bottom: 8% !important;
 }
 .book-container {
     border: 1px solid lightgray;
