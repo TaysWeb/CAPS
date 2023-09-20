@@ -1,14 +1,17 @@
 <template>
   <navComp/>
   <router-view/>
+  <FooterComp/>
 </template>
 
 <script>
 import navComp from '@/components/navbar-Comp.vue'
+import FooterComp from './components/footer-Comp.vue'
 export default {
   components: {
-    navComp
-  }
+    navComp,
+    FooterComp
+}
 }
 </script>
 <style>
@@ -35,7 +38,7 @@ export default {
 --secondary: #DED9DB;
 --accent: #1ED29C;
 }
- body {
+ body {  
   overflow-x: hidden;
 } 
 li {
