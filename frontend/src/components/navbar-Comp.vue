@@ -17,7 +17,7 @@
           aria-labelledby="offcanvasWithBothOptionsLabel"
         >
           <div class="offcanvas-header">
-           <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Hii there</h4>
+           <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><img src="https://i.postimg.cc/GtLfVxSs/favicon.png" width="50"> Luxuria </h4>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   
           </div>

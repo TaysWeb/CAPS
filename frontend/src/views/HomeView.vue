@@ -8,16 +8,34 @@
 
   </div>
    <!-- Movies Display -->
-    <div v-if="Movies">
-    <div v-for="movie in Movies" :key="movie.MovieID" :Movies="Movies"> 	      
-    <div class="container" >
-        <div class="movies ">
-          <img :src="movie.image" :alt="movie.Title" width="600">
+
+   <!-- <div v-if="Movies">
+   <div v-for="movie in Movies" :key="movie.MovieID" :Movies="Movies"> 	       -->
+    <!-- <div class="container my-5 gap-3"  style="position:relative;" >
+        <div class="movies row gap-5">
+          <div class="col d-flex flex-column align-items-center gap-3 p-4">
+          <img :src="movie.image" :alt="movie.Title" >
+          </div>
         </div>                                                                                                         
       </div>
     </div>
-    </div>
+    </div>   -->
+
     <!--End of movies display -->
+    <div class="row justify-content-center gap-4" v-if="Movies">
+            <div class="col" v-for="movie in Movies" :key="movie.MovieID">
+                <div class="card movie" style="width: 18rem;">
+                    <img :src="movie.image" class="card-img-top img-fluid" :alt="movie.Title">
+                    <div class="card-body"> 
+                      <h5 class="card-title fs-3">{{ movie.Title }} </h5>
+                     <p class="card-text"><span> {{ movie.Genre }}</span></p> 
+                     
+                    </div> 
+                  </div>
+            </div>
+        </div>
+   <!-- </div> -->
+   <!-- </div> -->
   <div v-else><SpinnerComp/></div>
 </div>      
 

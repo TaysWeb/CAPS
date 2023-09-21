@@ -26,10 +26,10 @@ export default {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: scroll;
+    /* background: scroll; */
 } 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 :root {
 --text: #F6F4F4;
@@ -39,7 +39,7 @@ export default {
 --accent: #1ED29C;
 }
  body {  
-  overflow-x: hidden;
+  overflow-x:hidden ;
 } 
 li {
 list-style:none;
