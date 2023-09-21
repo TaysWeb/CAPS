@@ -36,7 +36,9 @@
         </div>
    <!-- </div> -->
    <!-- </div> -->
-  <div v-else><SpinnerComp/></div>
+  <div v-else>
+    <SpinnerComp/>
+  </div>
 </div>      
 
 </template>
@@ -54,7 +56,8 @@ export default {
   data() {
         return {
 
-            search: ""
+            search: "",
+           
         }
     },
   computed:{
@@ -66,18 +69,26 @@ export default {
             this.$store.dispatch('fetchMovies')
         },
         methods: {
-    fetchMovies() {
-      fetch("https://caps-7.onrender.com/getAll").then(response => response.json())
-        .then(res => {
+  fetchMovies() {
+    fetch("https://caps-7.onrender.com/getAll")
+      .then(response => response.json())
+      .then(res => {
+        if (res.results) {
           if (this.search) {
-            this.Movies = res.results.filters(Movies => Movies.Title.toLowerCase().includes(this.search.toLowerCase())
+            this.Movies = res.results.filter(movie =>
+              movie.Title.toLowerCase().includes(this.search.toLowerCase())
             );
           } else {
             this.Movies = res.results;
           }
-        });
-    }
-  },
+        } else {
+          // Handle the case where res.results is undefined or falsy
+          this.Movies = [];
+        }
+      });
+  }
+},
+
   created() {
     this.fetchMovies();
   }
