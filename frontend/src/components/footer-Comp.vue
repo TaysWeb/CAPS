@@ -2,7 +2,7 @@
    
    <!-- Footer -->
 <footer class="text-center text-lg-start ">
-    <div class="container-fluid" style="border:2px solid black">
+    <div class="container-fluid" >
    
             <!-- Section: Form -->
     <section class="py-3" >
